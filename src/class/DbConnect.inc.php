@@ -16,9 +16,11 @@ class DbConnect {
     }
 
     function connect(){
-        $conn = new mysqli($this->connection, $this->username, $this->password, $this->database, $this->port);
+        $conn = new mysqli($this->connection, $this->username, $this->password,
+            $this->database, $this->port);
+
         if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
+            die("Connection failed: " . $conn->connect_error . "\n");
         }
 //        echo "Connected successfully";
         return $conn;

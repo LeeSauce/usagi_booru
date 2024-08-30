@@ -12,13 +12,8 @@
 </head>
 
 <body>
-
 <?php
-    require("class/DbConnect.inc.php");
 
-    $db = new DbConnect( "root",
-        "xXDaTUiQQ123!?@", "USAGI_DB");
-    $conn = $db->connect();
 ?>
 
 <h1>&#x2764Usagi Booru&#x2764</h1>
