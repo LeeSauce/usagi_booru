@@ -37,12 +37,23 @@ class ThreadBuilder{
         $this->title = $title;
         $this->message = $message;
         $this->publisherID = $publisherID;
+        try{
+            $this->setBoardID();
+        }catch(Exception $e){
+            die($e->getMessage());
+        }
+
+    }
+
+    /**
+     * @throws Exception
+     */
+    private function setBoardID(){
         if(isset($_POST["boardID"])){
             $this->boardID = $_POST["boardID"];
         }else{
-            die("\n");
+            throw new Exception('Board ID not provided');
         }
-
     }
 
     public function setFile($file){

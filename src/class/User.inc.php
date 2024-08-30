@@ -22,16 +22,20 @@ class User {
         $title = $_POST['title'];
         $message = $_POST['message'];
         $file = $_FILES['file'];
-        if(isset($title) && isset($message) !== null){
-            $sharer = new ThreadBuilder($title, $message, $this->id);
-            if(isset($file)){
-                $sharer->setFile($file);
-            }
+        try{
+            if(isset($title) && isset($message) !== null){
+                $sharer = new ThreadBuilder($title, $message, $this->id);
+                if(isset($file)){
+                    $sharer->setFile($file);
+                }
 
-            $sharer = $sharer->build();
-            $sharer->sharer();
-        }else{
-            die("Thread not shared\n");
+                $sharer = $sharer->build();
+                $sharer->sharer();
+            }else{
+                throw new Exception("You must provide a title and message");
+            }
+        }catch (Exception $e){
+            echo $e->getMessage();
         }
     }
     function deleteThread(){}
