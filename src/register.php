@@ -24,6 +24,7 @@
             </form>
             <div class="return">
                 <button><a href="login.php"">Back to log-in</a></button>
+                <button><a href="index.php"">Home</a></button>
             </div>
         </fieldset>
     </div>

@@ -34,6 +34,7 @@
                 try{
                     if($conn->query($sql)){
                         echo "<p>Success\n</p>";
+                        $conn->close();
                     }else{
                         throw new Exception($conn->error);
                     }

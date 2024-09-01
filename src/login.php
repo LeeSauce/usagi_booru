@@ -19,6 +19,7 @@
             </form>
             <div class="return">
                 <button><a href="register.php"">Register</a></button>
+                <button><a href="index.php"">Home</a></button>
             </div>
         </fieldset>
     </div>

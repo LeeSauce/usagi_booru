@@ -1,3 +1,6 @@
+<?php
+    require("class/Retreive.inc.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +21,7 @@
 
 <h1>&#x2764Usagi Booru&#x2764</h1>
 <header>
-    <a href="">log-in/sign-up</a>
+    <a href="login.php">log-in/sign-up</a>
 </header>
 <main>
     <div class="flex-container">
@@ -26,7 +29,15 @@
             <nav>
                 <h2>Boards</h2>
                 <ul>
-                    <li>board list</li>
+                   <?php
+                    $ret = new Retrieve("SELECT BoardName FROM BOARD;");
+                    $boards = $ret ->retrieve();
+                    foreach($boards as $board) {
+                        foreach($board as $key => $value) {
+                            echo("<li><a href=''>" . $value . "</a></li> \n");
+                        }
+                    }
+                   ?>
                 </ul>
             </nav>
         </div>
@@ -55,10 +66,10 @@
     <nav class="selection">
         <table>
             <tr>
-                <td>Settings</td>
-                <td>FAQ</td>
-                <td>Contact</td>
-                <td>Socials</td>
+                <td><a href="">Settings</a></td>
+                <td><a href="">FAQ</a></td>
+                <td><a href="">Contact</a></td>
+                <td><a href="">Socials</a></td>
             </tr>
         </table>
     </nav>
