@@ -15,6 +15,7 @@ class User {
         $this->dob = $dob;
         $this->dateCreated = $dateCreated;
         $this->role = $role;
+
     }
 
     // TODO: need to add thread and comment functions
@@ -36,6 +37,7 @@ class User {
             }
         }catch (Exception $e){
             echo $e->getMessage();
+            die();
         }
     }
     function deleteThread(){}

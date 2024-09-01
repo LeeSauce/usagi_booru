@@ -11,12 +11,15 @@
         <fieldset>
             <h1>Log-in</h1>
             <form method="post">
-                <input type="text" name="username" id="username" placeholder="username" required aria-required="true">
+                <input type="text" name="id" id="id" placeholder="username or email" required aria-required="true">
                 <br>
                 <input type="password" name="password" id="password" placeholder="password" required aria-required="true">
                 <br>
                 <input type="submit" value="Login">
             </form>
+            <div class="return">
+                <button><a href="register.php"">Register</a></button>
+            </div>
         </fieldset>
     </div>
 </div>
