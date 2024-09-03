@@ -82,7 +82,7 @@ if(isset($_SESSION["USER"])){
             <tr>
                 <td><a href="">Settings</a></td>
                 <td><a href="">FAQ</a></td>
-                <td><a href="">Contact</a></td>
+                <td><a href="contact.php">Contact</a></td>
                 <td><a href="">Socials</a></td>
             </tr>
         </table>
