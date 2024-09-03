@@ -22,7 +22,7 @@
                 $this->password = $password;
                 $this->date = $date;
             }else{
-                die("Fields not set\n");
+                die("<p>Enter log in info!</p>\n");
             }
         }
 
@@ -30,7 +30,7 @@
             if($this->username != null && $this->email != null && $this->password != null && $this->date != null){
                 $this->connect = new DbConnect("root", "xXDaTUiQQ123!?@", "USAGI_DB");
                 $conn = $this->connect->connect();
-                $sql = "CALL REGISTER_PROC(".$this->username.",'".$this->email."','".$this->password."','".$this->date."');";
+                $sql = "CALL REGISTER_PROC('$this->username', '$this->email', '$this->password', '$this->date');";
                 try{
                     if($conn->query($sql)){
                         echo "<p>Success\n</p>";
@@ -39,7 +39,7 @@
                         throw new Exception($conn->error);
                     }
                 }catch (Exception $e){
-                    echo ($e->getMessage()."\n");
+                    echo ($e->getMessage()." This is a DB Error\n");
                 }
             }
         }

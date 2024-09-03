@@ -1,5 +1,8 @@
 <?php
-    require("class/Retreive.inc.php");
+    session_start();
+    require("class/Retrieve.inc.php");
+    require("class/User.inc.php");
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,13 +18,24 @@
 </head>
 
 <body>
-<?php
-
-?>
 
 <h1>&#x2764Usagi Booru&#x2764</h1>
+<?php
+if(isset($_SESSION["USER"])){
+
+    $user = unserialize($_SESSION["USER"]);
+    $uName = $user->getUsername();
+    echo("<p>Heya $uName!</p>");
+}
+?>
 <header>
-    <a href="login.php">log-in/sign-up</a>
+    <?php
+        if(isset($_SESSION["USER"])){
+            echo("<a href=''>Logout</a>");
+        }else{
+            echo("<a href='login.php'>log-in/sign-up</a>");
+        }
+    ?>
 </header>
 <main>
     <div class="flex-container">

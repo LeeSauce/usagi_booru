@@ -1,7 +1,7 @@
 <!DOCTYPE = html>
 <html lang="en">
 <head>
-    <title>Usagi Booru</title>
+    <h1>&#x2764Usagi Booru&#x2764</h1>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="styles/webStyle.css">
 </head>

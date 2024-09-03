@@ -32,8 +32,4 @@
         }
 
     }
-
-//    $ret = new Retreive("SELECT BOARD.BoardName FROM BOARD;");
-//    $myArray = $ret->retrieve();
-//    var_dump($myArray);
 ?>

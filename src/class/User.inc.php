@@ -1,5 +1,4 @@
 <?php
-require ("Thread.inc.php");
 class User {
     private $id;
     private $username;
@@ -20,6 +19,7 @@ class User {
 
     // TODO: need to add thread and comment functions
     function createThread(){
+        require_once("Thread.inc.php");
         $title = $_POST['title'];
         $message = $_POST['message'];
         $file = $_FILES['file'];
