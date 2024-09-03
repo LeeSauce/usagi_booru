@@ -12,6 +12,8 @@
     </head>
     <body>
     <?php
+        error_reporting(E_ALL);
+        ini_set('display_errors', 1);
         require("class/Contact.inc.php");
     ?>
     <div class="flex-container">
@@ -29,12 +31,15 @@
         </fieldset>
     </div>
     <?php
-    $contact = new Contact();
-    if($contact->sendMail()){
-        echo("<p>Mail sent!</p>");
-    }else{
-        echo("<p>Mail not sent!</p>");
-    }
+//    $contact = new Contact();
+//    if($contact->sendMail()){
+//        echo("<p>Mail sent!</p>");
+//    }else{
+//        echo("<p>Mail not sent!</p>");
+//    }
+
+        $contact = new Contact();
+        $contact->sendMail();
     ?>
     </body>
 </HTML>
