@@ -38,6 +38,7 @@
 <?php
     $reg = new Register();
     $reg->register();
+    header("location: login.php");
 ?>
 </body>
 </html>

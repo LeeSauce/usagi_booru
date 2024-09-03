@@ -31,7 +31,7 @@ if(isset($_SESSION["USER"])){
 <header>
     <?php
         if(isset($_SESSION["USER"])){
-            echo("<a href=''>Logout</a>");
+            echo("<a href='class/Logout.inc.php'>Logout</a>");
         }else{
             echo("<a href='login.php'>log-in/sign-up</a>");
         }

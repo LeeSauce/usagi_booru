@@ -22,7 +22,7 @@
                 $this->password = $password;
                 $this->date = $date;
             }else{
-                die("<p>Enter log in info!</p>\n");
+                die("\n");
             }
         }
 
@@ -33,7 +33,6 @@
                 $sql = "CALL REGISTER_PROC('$this->username', '$this->email', '$this->password', '$this->date');";
                 try{
                     if($conn->query($sql)){
-                        echo "<p>Success\n</p>";
                         $conn->close();
                     }else{
                         throw new Exception($conn->error);
