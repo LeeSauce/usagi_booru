@@ -28,7 +28,7 @@
             $this->mail->isHTML(true);
             if(isset($_POST["subject"]) && isset($_POST["message"]) && isset($_POST["header"])){
                 $this->mail->Subject = $_POST["subject"];
-                $this->mail->Body = $_POST["message"] . "<br> from:" . $_POST["header"];
+                $this->mail->Body = $_POST["message"] . "<br> from: " . $_POST["header"];
                 try{
                     $this->mail->send();
                     echo("<p>Mail sent!</p>");
