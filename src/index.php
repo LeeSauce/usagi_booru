@@ -25,15 +25,15 @@ if(isset($_SESSION["USER"])){
 
     $user = unserialize($_SESSION["USER"]);
     $uName = $user->getUsername();
-    echo("<p>Heya $uName!</p>");
+    echo("<p>Heys $uName!</p>");
 }
 ?>
 <header>
     <?php
         if(isset($_SESSION["USER"])){
-            echo("<a href='class/Logout.inc.php'>Logout</a>");
+            echo("<a href='class/Logout.inc.php'>Logout</a>\n");
         }else{
-            echo("<a href='login.php'>log-in/sign-up</a>");
+            echo("<a href='login.php'>log-in/sign-up</a>\n");
         }
     ?>
 </header>
@@ -48,7 +48,7 @@ if(isset($_SESSION["USER"])){
                     $boards = $ret ->retrieve();
                     foreach($boards as $board) {
                         foreach($board as $key => $value) {
-                            echo("<li><a href=''>" . $value . "</a></li> \n");
+                            echo("<li><a href='board.php?b=$value'>" . $value . "</a></li> \n");
                         }
                     }
                    ?>

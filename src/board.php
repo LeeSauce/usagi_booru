@@ -1,13 +1,25 @@
-<!DOCTYPE = html>
+<?php
+session_start();
+require("class/Retrieve.inc.php");
+require("class/User.inc.php");
+
+?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Usagi Booru</title>
+    <title>&#x2764Usagi Booru&#x2764</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="styles/webStyle.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
 
 </head>
 
 <body>
+
+
 <h1>Usagi Booru</h1>
 <main>
     <div class="flex-container">
@@ -15,14 +27,30 @@
             <nav>
                 <h2>Boards</h2>
                 <ul>
-                    <li>board list</li>
+                    <?php
+                    $ret = new Retrieve("SELECT BoardName FROM BOARD;");
+                    $boards = $ret ->retrieve();
+                    foreach($boards as $board) {
+                        foreach($board as $key => $value) {
+                            echo("<li><a href='board.php?b=$value'>" . $value . "</a></li> \n");
+                        }
+                    }
+                    ?>
                 </ul>
             </nav>
         </div>
         <div class = "display">
             <div class="threads">
                 <h2>Board Name</h2>
-                <a><input type="button" value="create thread"></a><br>
+                <?php
+                $board = null;
+                if(isset($_GET["b"])){
+                    $board = $_GET["b"];
+                }
+                echo("<button><a href='postThread.php?b=$board'>Create Thread</a></button>\n");
+                ?>
+                <button><a href="index.php"">Home</a></button>
+                <br>
                 <table>
                     threads go here
                     <tr>
