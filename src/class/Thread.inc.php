@@ -1,5 +1,5 @@
 <?php
-require("DbConnect.inc.php");
+require ("interface/Sharer.inc.php");
 class SharerThread{
 
     private $title;
@@ -8,7 +8,7 @@ class SharerThread{
     private $boardID;
     private $publisherID;
 
-
+    private $sharer;
     private function __construct(ThreadBuilder $threadBuilder){
         $this->boardID = $threadBuilder->getBoardID();
         $this->publisherID = $threadBuilder->getPublisherID();
@@ -17,9 +17,12 @@ class SharerThread{
         $this->file = $threadBuilder->getFile();
     }
 
-    // TODO: Share thread function
+    public function sharer($context){
 
-    public function sharer(){}
+        $factory = new SharerFactory($context);
+        $this->sharer = $factory->sharerFactory();
+        $this->sharer->sharer();
+    }
 
     public static function getSharer(ThreadBuilder $threadBuilder){
         return new SharerThread($threadBuilder);
@@ -40,7 +43,7 @@ class ThreadBuilder{
         try{
             $this->setBoardID();
         }catch(Exception $e){
-            die($e->getMessage());
+            die("<p>" .$e->getMessage() . "</p>\n");
         }
 
     }
@@ -49,8 +52,8 @@ class ThreadBuilder{
      * @throws Exception
      */
     private function setBoardID(){
-        if(isset($_POST["boardID"])){
-            $this->boardID = $_POST["boardID"];
+        if(isset($_GET["b"])){
+            $this->boardID = $_GET["b"];
         }else{
             throw new Exception('Board ID not provided');
         }

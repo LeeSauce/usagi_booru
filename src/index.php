@@ -44,12 +44,11 @@ if(isset($_SESSION["USER"])){
                 <h2>Boards</h2>
                 <ul>
                    <?php
-                    $ret = new Retrieve("SELECT BoardName FROM BOARD;");
+                    $ret = new Retrieve("SELECT BoardName, BoardID FROM BOARD;");
                     $boards = $ret ->retrieve();
                     foreach($boards as $board) {
-                        foreach($board as $key => $value) {
-                            echo("<li><a href='board.php?b=$value'>" . $value . "</a></li> \n");
-                        }
+                        echo("<li><a href='board.php?context=thread&b=". $board["BoardID"] ."'>"
+                            . $board["BoardName"] . "</a></li> \n");
                     }
                    ?>
                 </ul>

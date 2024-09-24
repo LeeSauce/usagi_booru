@@ -1,8 +1,13 @@
 <?php
     session_start();
+    require ("class/User.inc.php");
+
+    $user = null;
 
     if (!isset($_SESSION['USER'])){
         header ("location: login.php");
+    }else{
+       $user = unserialize($_SESSION['USER']);
     }
 ?>
 <!DOCTYPE html>
@@ -33,10 +38,26 @@
             if(isset($_GET["b"])){
                 $board = $_GET["b"];
             }
-            echo("<button><a href='board.php?b=$board'>Back</a></button>\n");
+            echo("<button><a href='board.php?context=thread&b=$board'>Back</a></button>\n");
             ?>
         </form>
     </fieldset>
+
+    <?php
+        if(!isset($_POST["post"])){
+            die();
+        }
+
+        if($user instanceof User){
+
+            if(isset($_GET["context"])){
+                $context = $_GET["context"];
+                $user->createPost($context);
+                header ("location: board.php?context=$context&b=$board");
+            }
+        }
+
+    ?>
 </div>
 </body>
 </html>

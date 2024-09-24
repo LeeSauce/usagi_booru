@@ -28,12 +28,11 @@ require("class/User.inc.php");
                 <h2>Boards</h2>
                 <ul>
                     <?php
-                    $ret = new Retrieve("SELECT BoardName FROM BOARD;");
+                    $ret = new Retrieve("SELECT BoardName, BoardID FROM BOARD;");
                     $boards = $ret ->retrieve();
                     foreach($boards as $board) {
-                        foreach($board as $key => $value) {
-                            echo("<li><a href='board.php?b=$value'>" . $value . "</a></li> \n");
-                        }
+                        echo("<li><a href='board.php?context=thread&b=". $board["BoardID"] ."'>"
+                            . $board["BoardName"] . "</a></li> \n");
                     }
                     ?>
                 </ul>
@@ -47,7 +46,7 @@ require("class/User.inc.php");
                 if(isset($_GET["b"])){
                     $board = $_GET["b"];
                 }
-                echo("<button><a href='postThread.php?b=$board'>Create Thread</a></button>\n");
+                echo("<button><a href='postThread.php?context=thread&b=$board'>Create Thread</a></button>\n");
                 ?>
                 <button><a href="index.php"">Home</a></button>
                 <br>

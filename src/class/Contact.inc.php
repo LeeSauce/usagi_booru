@@ -31,7 +31,7 @@
                 $this->mail->Body = $_POST["message"] . "<br> from: " . $_POST["header"];
                 try{
                     $this->mail->send();
-                    echo("<p>Mail sent!</p>");
+                    echo("<p>Mail sent!</p>\n");
                 }catch (Exception $e){
                     $this->mail->ErrorInfo = $e->getMessage();
                 }

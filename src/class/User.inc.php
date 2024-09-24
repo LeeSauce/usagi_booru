@@ -18,31 +18,33 @@ class User {
     }
 
     // TODO: need to add thread and comment functions
-    function createThread(){
+    function createPost($context){
+
         require_once("Thread.inc.php");
         $title = $_POST['title'];
         $message = $_POST['message'];
         $file = $_FILES['file'];
+
         try{
             if(isset($title) && isset($message) !== null){
-                $sharer = new ThreadBuilder($title, $message, $this->id);
+                $thread = new ThreadBuilder($title, $message, $this->id);
                 if(isset($file)){
-                    $sharer->setFile($file);
+                    $thread->setFile($file);
                 }
 
-                $sharer = $sharer->build();
-                $sharer->sharer();
+                $thread = $thread->build();
+                $thread->sharer($context);
             }else{
-                throw new Exception("You must provide a title and message");
+                throw new Exception("Something went wrong");
             }
         }catch (Exception $e){
-            echo $e->getMessage();
+            echo ("<p>" .$e->getMessage() . "</p>\n");
             die();
         }
     }
-    function deleteThread(){}
-    function createComment(){}
-    function deleteComment(){}
+    function deletePost(){}
+
+
 
 
     // access modifiers below
