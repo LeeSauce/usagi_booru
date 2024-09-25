@@ -23,16 +23,15 @@ class User {
         require_once("Thread.inc.php");
         $title = $_POST['title'];
         $message = $_POST['message'];
-        $file = $_FILES['file'];
 
         try{
             if(isset($title) && isset($message) !== null){
-                $thread = new ThreadBuilder($title, $message, $this->id);
-                if(isset($file)){
-                    $thread->setFile($file);
+                $threadBuilder = new ThreadBuilder($title, $message, $this->id);
+                if(isset($_FILES['file'])){
+                    $threadBuilder->setFile($_FILES['file']);
                 }
 
-                $thread = $thread->build();
+                $thread = $threadBuilder->build();
                 $thread->sharer($context);
             }else{
                 throw new Exception("Something went wrong");

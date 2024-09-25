@@ -30,7 +30,7 @@
             <br>
             <input type="file" aria-required="false" name="file">
             <br>
-            <textarea name="text" placeholder="write something..." rows="6" cols="60" required aria-required="true"></textarea>
+            <textarea name="message" placeholder="write something..." rows="6" cols="60" required aria-required="true"></textarea>
             <br>
             <input name="post" type="submit" value="Post">
             <?php

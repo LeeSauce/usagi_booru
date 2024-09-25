@@ -14,11 +14,13 @@
             $pubID = $thread->getPublisherID();
             $title = $thread->getTitle();
             $msg = $thread->getMessage();
-            $file = $thread->getFile();
+            $file = file_get_contents($thread->getFile()['tmp_name']);
 
-            $prepare -> bind_Param("ssssb", $bID, $pubID, $title, $msg, $file);
+            $prepare -> bind_Param("sssss", $bID, $pubID, $title, $msg, $file);
 
             $prepare -> execute();
+
+            $db->close();
         }
     }
 
