@@ -1,5 +1,6 @@
 <?php
 require ("interface/Sharer.inc.php");
+require ("DbConnect.inc.php");
 class SharerThread{
 
     private $title;
@@ -8,7 +9,6 @@ class SharerThread{
     private $boardID;
     private $publisherID;
 
-    private $sharer;
     private function __construct(ThreadBuilder $threadBuilder){
         $this->boardID = $threadBuilder->getBoardID();
         $this->publisherID = $threadBuilder->getPublisherID();
@@ -20,13 +20,56 @@ class SharerThread{
     public function sharer($context){
 
         $factory = new SharerFactory($context);
-        $this->sharer = $factory->sharerFactory();
-        $this->sharer->sharer();
+        $sharer = $factory->sharerFactory();
+        $sharer->sharer($this);
     }
 
     public static function getSharer(ThreadBuilder $threadBuilder){
         return new SharerThread($threadBuilder);
     }
+
+    /**
+     * @return mixed
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMessage()
+    {
+        return $this->message;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBoardID()
+    {
+        return $this->boardID;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPublisherID()
+    {
+        return $this->publisherID;
+    }
+
+
+
 
 
 }
