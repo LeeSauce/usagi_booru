@@ -51,19 +51,28 @@ require("class/User.inc.php");
                 <button><a href="index.php"">Home</a></button>
                 <br>
                 <table>
-                    threads go here
-                    <tr>
-                        <td>example</td>
-                        <td>example</td>
-                        <td>example</td>
-                        <td>example</td>
-                    </tr>
-                    <tr>
-                        <td>example</td>
-                        <td>example</td>
-                        <td>example</td>
-                        <td>example</td>
-                    </tr>
+                    <?php
+                        $SQL = "CALL SELECT_THREADS('$board');";
+                        $retriever = new Retrieve($SQL);
+
+                        $threads = $retriever ->retrieve();
+                        foreach($threads as $thread) {
+                            echo("<tr>");
+                            foreach($thread as $key => $value) {
+                                if($key == "File"){
+                                    echo("<td>");
+                                    echo ('<img src="data:image/jpeg;base64,' . base64_encode($value) . '" alt="Uploaded Image" style="max-width: 60%;">');
+                                    echo("</td>\n");
+                                }
+                                else if($key == "Title" || $key == "Username" || $key == "DateCreate"){
+                                    echo("<td>");
+                                    echo ($value);
+                                    echo("</td>\n");
+                                }
+                            }
+                        }
+                    ?>
+
                 </table>
             </div>
         </div>

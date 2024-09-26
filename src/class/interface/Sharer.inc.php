@@ -16,7 +16,7 @@
             $msg = $thread->getMessage();
             $file = file_get_contents($thread->getFile()['tmp_name']);
 
-            $prepare -> bind_Param("sssss", $bID, $pubID, $title, $msg, $file);
+            $prepare -> bind_param("sssss", $bID, $pubID, $title, $msg, $file);
 
             $prepare -> execute();
 
@@ -44,7 +44,7 @@
                 break;
                 case "comment" :
                     return new CommentSharer;
-                    break;
+                break;
                 default:
                     return null;
             }
