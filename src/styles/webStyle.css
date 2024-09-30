@@ -5,7 +5,8 @@ h1{
     text-align: center;
 }
 body{
-    background: linear-gradient(#6c8bff ,#c5d2ff);
+    background: linear-gradient(#6c8bff ,#c5d2ff) no-repeat;
+    background-attachment: fixed;
 }
 header{
     display: flex;
@@ -19,7 +20,7 @@ header{
     margin-left:20% ;
 }
 
-.boards, .display > div{
+.boards,.thread_boards, .display > div{
     background-color: rgba(255, 255, 255, 0.71);
     border: double mediumpurple 5px;
     margin: 10px 10px 10px 10px;
@@ -32,11 +33,11 @@ header{
     display: flex;
     justify-content: center;
 }
-table, tr,td{
-    border: solid mediumpurple;
-    border-collapse: collapse;
-    background-color: rgba(255, 255, 255, 0.71);
-}
+/*table, tr,td{*/
+/*    border: solid mediumpurple;*/
+/*    border-collapse: collapse;*/
+/*    background-color: rgba(255, 255, 255, 0.71);*/
+/*}*/
 .flex-container{
     display: flex;
     justify-content: center;
@@ -45,6 +46,7 @@ table, tr,td{
     display: flex;
     justify-content: center;
 }
+
 .featured{
     width: 50%;
     height: auto;
@@ -55,6 +57,10 @@ table, tr,td{
     box-shadow: 7px 10px rgba(131, 131, 131, 0.28);
 
 }
+image{
+    justify-content: center;
+}
+
 #usagiL{
     max-width: 10%;
 }
@@ -85,4 +91,13 @@ a, a:visited{
 a:hover{
     color: white;
 }
+
+.thread_boards{
+    max-height: 247.533px;
+}
+.image-container{
+    text-align: center;
+}
+
+/*I hate UI!*/
 

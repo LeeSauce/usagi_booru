@@ -23,7 +23,7 @@ require("class/User.inc.php");
 <h1>Usagi Booru</h1>
 <main>
     <div class="flex-container">
-        <div class ="boards">
+        <div class ="thread_boards">
             <nav>
                 <h2>Boards</h2>
                 <ul>
@@ -50,25 +50,33 @@ require("class/User.inc.php");
                 ?>
                 <button><a href="index.php"">Home</a></button>
                 <br>
-                <table>
+                <hr>
+                <table class="thread_table">
                     <?php
                         $SQL = "CALL SELECT_THREADS('$board');";
                         $retriever = new Retrieve($SQL);
 
                         $threads = $retriever ->retrieve();
+                        echo("<tr>");
+                        $count = 0;
                         foreach($threads as $thread) {
-                            echo("<tr>");
+                            echo("<td>");
                             foreach($thread as $key => $value) {
+                                echo("<div class = 'image-container'>");
                                 if($key == "File"){
-                                    echo("<td>");
-                                    echo ('<img src="data:image/jpeg;base64,' . base64_encode($value) . '" alt="Uploaded Image" style="max-width: 60%;">');
-                                    echo("</td>\n");
+                                    echo ('<a href="thread.php"><img src="data:image/jpeg;base64,' . base64_encode($value) .
+                                        '" alt="Uploaded Image" style="max-width: 60%;"></a>');
                                 }
-                                else if($key == "Title" || $key == "Username" || $key == "DateCreate"){
-                                    echo("<td>");
-                                    echo ($value);
-                                    echo("</td>\n");
+                                if($key == "Title" || $key == "DateCreated"){
+                                    echo ("<p>".$value . "</p>\n");
                                 }
+                            }
+                            echo("</div></td>\n");
+                            $count ++;
+                            if($count > 3){
+                                $count = 0;
+                                echo("</tr>\n");
+                                echo("<tr>\n");
                             }
                         }
                     ?>
@@ -77,15 +85,5 @@ require("class/User.inc.php");
             </div>
         </div>
     </div>
-    <nav class="selection">
-        <table>
-            <tr>
-                <td>Settings</td>
-                <td>FAQ</td>
-                <td>Contact</td>
-                <td>Socials</td>
-            </tr>
-        </table>
-    </nav>
 </body>
 </html>
