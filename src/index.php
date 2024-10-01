@@ -71,7 +71,20 @@ if(isset($_SESSION["USER"])){
             <hr>
             <br>
             <table>
-                featured stuff goes here
+                <?php
+                    $SQL = "CALL SELECT_FEATURED();";
+                    $retriever = new Retrieve($SQL);
+                    $featured = $retriever->retrieve();
+                    echo("<tr>");
+                    foreach($featured as $row) {
+                        echo("<td>");
+                        echo("<a href='thread.php?context=comment&t=". $row["ThreadID"] .
+                            "'><img src='data:image/jpeg;base64," . base64_encode($row["File"])
+                        . "' alt='featured image' style='max-width: 60%;'></a>\n");
+                        echo("</td>\n");
+                    }
+                    echo("</tr>\n");
+                ?>
             </table>
         </div>
         <img id="usagiR" alt="Usagi" src="./imgs/usagi.png">

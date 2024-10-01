@@ -20,7 +20,7 @@ require("class/User.inc.php");
 <body>
 
 
-<h1>Usagi Booru</h1>
+<h1>&#x2764Usagi Booru&#x2764</h1>
 <main>
     <div class="flex-container">
         <div class ="thread_boards">
@@ -40,7 +40,7 @@ require("class/User.inc.php");
         </div>
         <div class = "display">
             <div class="threads">
-                <h2>Board Name</h2>
+                <h2>Thread Name</h2>
                 <?php
                 $board = null;
                 if(isset($_GET["b"])){
@@ -75,7 +75,7 @@ require("class/User.inc.php");
                             }
                             echo("</div></td>\n");
                             $count ++;
-                            if($count > 1){
+                            if($count > 3){
                                 $count = 0;
                                 echo("</tr>\n");
                                 echo("<tr>\n");

@@ -62,11 +62,13 @@ image{
 }
 
 #usagiL{
-    max-width: 10%;
+    margin-top: 100px;
+    max-height: 165.633px;
 }
 
 #usagiR{
-    max-width: 10%;
+    margin-top: 100px;
+    max-height: 165.633px;
     transform: scaleX(-1);
 }
 h1{
