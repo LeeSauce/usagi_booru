@@ -62,9 +62,11 @@ require("class/User.inc.php");
                         foreach($threads as $thread) {
                             echo("<td>");
                             foreach($thread as $key => $value) {
+
                                 echo("<div class = 'image-container'>");
                                 if($key == "File"){
-                                    echo ('<a href="thread.php"><img src="data:image/jpeg;base64,' . base64_encode($value) .
+                                    echo ('<a href="thread.php?context=comment&t='. $thread["ThreadID"]
+                                        .'"><img src="data:image/jpeg;base64,' . base64_encode($value) .
                                         '" alt="Uploaded Image" style="max-width: 60%;"></a>');
                                 }
                                 if($key == "Title" || $key == "DateCreated"){
@@ -73,7 +75,7 @@ require("class/User.inc.php");
                             }
                             echo("</div></td>\n");
                             $count ++;
-                            if($count > 3){
+                            if($count > 1){
                                 $count = 0;
                                 echo("</tr>\n");
                                 echo("<tr>\n");
