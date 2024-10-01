@@ -42,8 +42,8 @@ require("class/User.inc.php");
                 <?php
                     $thread = null;
                     if(isset($_GET["t"])) {
-                        $thread = $_GET["t"];
-                        $SQL = "CALL SELECT_THREAD('$thread')";
+                        $threadID = $_GET["t"];
+                        $SQL = "CALL SELECT_THREAD('$threadID')";
 
                         $retriever = new Retrieve($SQL);
                         $thread = $retriever ->retrieve();
@@ -63,7 +63,15 @@ require("class/User.inc.php");
                 ?>
                 <hr>
                 <div class="comment_section">
-
+                    <form action="thread.php?context=comment&t=<?php echo($threadID)?>" method="post" enctype="multipart/form-data">
+                        <textarea placeholder="Add a comment..." aria-required="true" required name="comment" rows="3" cols="45"></textarea>
+                        <br>
+                        <input type="file" aria-required="true">
+                        <br>
+                        <input type="submit" value="Post" required aria-required="true">
+                    </form>
+                    <hr>
+                    <h2>Comments</h2>
                 </div>
             </div>
         </div>

@@ -1,10 +1,10 @@
 <?php
     interface Sharer {
-        public function sharer(SharerThread $thread);
+        public function sharer($thread);
     }
 
     class ThreadSharer implements Sharer {
-        public function sharer(SharerThread $thread) {
+        public function sharer($thread) {
             $conn = new DbConnect("root", "xXDaTUiQQ123!?@", "USAGI_DB");
             $db = $conn->connect();
             $sql = "CALL ADD_THREAD(?,?,?,?,?,@statusMsg)";
@@ -25,7 +25,7 @@
     }
 
     class CommentSharer implements Sharer {
-        public function sharer(SharerThread $thread) {
+        public function sharer($thread) {
 
         }
     }

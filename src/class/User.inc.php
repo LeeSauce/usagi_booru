@@ -41,6 +41,10 @@ class User {
             die();
         }
     }
+
+    function createComment(){
+
+    }
     function deletePost(){}
 
 
