@@ -87,6 +87,21 @@ if(isset($_POST["post"])){
                     </form>
                     <hr>
                     <h2>Comments</h2>
+                    <?php
+                        $SQL ="SELECT * FROM COMMENT_VIEW;";
+                        $retriever = new Retrieve($SQL);
+                        $comments = $retriever ->retrieve();
+                        foreach($comments as $comment) {
+                            echo("<div class='comment'>\n");
+                            echo("<p><strong>Username:</strong> " . $comment["Username"] . "</p>");
+                            echo("<img src='data:image/jpeg;base64,". base64_encode($comment["File"])
+                                ."' alt='comment image' style='max-height: 200px;'>\n");
+                            echo("<p><strong>Message:</strong> " . $comment["Comment"] . "</p>\n");
+                            echo("<p><strong>Date:</strong> " . $comment["Date_created"] . "</p>\n");
+                            echo("</div>\n");
+                            echo("<br>\n");
+                        }
+                    ?>
                 </div>
             </div>
         </div>
