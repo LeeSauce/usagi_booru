@@ -1,8 +1,9 @@
 <?php
-    require("DbConnect.inc.php");
+//    require("DbConnect.inc.php");
+    require("Post.inc.php");
     require("interface/Sharer.inc.php");
 
-    class SharerComment{
+    class SharerComment extends Post{
         private $comment;
         private $file;
         private $commenterID;
@@ -93,5 +94,39 @@
         public function build(){
             return SharerComment::getSharrer($this);
         }
+
+        /**
+         * @return mixed
+         */
+        public function getComment()
+        {
+            return $this->comment;
+        }
+
+        /**
+         * @return mixed
+         */
+        public function getFile()
+        {
+            return $this->file;
+        }
+
+        /**
+         * @return mixed
+         */
+        public function getCommenterID()
+        {
+            return $this->commenterID;
+        }
+
+        /**
+         * @return mixed
+         */
+        public function getThreadID()
+        {
+            return $this->threadID;
+        }
+
+
     }
 ?>

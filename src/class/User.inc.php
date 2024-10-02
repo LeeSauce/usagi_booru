@@ -42,10 +42,27 @@ class User {
         }
     }
 
-    function createComment(){
+    function createComment($context){
+        require_once("Comment.inc.php");
 
+        $comment = $_POST['comment'];
+        try{
+            if(isset($comment) !== null){
+                $commentBuilder = new CommentBuilder($comment, $this->id);
+                if(isset($_FILES['cFile'])){
+                    $commentBuilder->setFile($_FILES['cFile']);
+                }
+                $comment = $commentBuilder->build();
+                $comment->sharer($context);
+            }
+        }catch (Exception $e){
+            echo ("<p>" .$e->getMessage() . "</p>\n");
+            die();
+        }
     }
     function deletePost(){}
+
+    function deleteComment(){}
 
 
 

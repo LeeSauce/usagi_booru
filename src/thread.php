@@ -4,6 +4,20 @@ require("class/Retrieve.inc.php");
 require("class/User.inc.php");
 
 ?>
+<?php
+if(isset($_POST["post"])){
+    if(!isset($_SESSION["USER"])){
+        header("location: login.php");
+    }
+    else{
+        $user = unserialize($_SESSION["USER"]);
+        if($user instanceof User && isset($_GET["context"])){
+            $context = $_GET["context"];
+            $user->createComment($context);
+        }
+    }
+}
+?>
 <!DOCTYPE html>
 
 <html lang="en">
@@ -38,6 +52,7 @@ require("class/User.inc.php");
         <div class = "display">
             <div class="threads">
                 <h2>Thread</h2>
+                <button><a href="index.php">Home</a></button>
                 <hr>
                 <?php
                     $thread = null;
@@ -66,9 +81,9 @@ require("class/User.inc.php");
                     <form action="thread.php?context=comment&t=<?php echo($threadID)?>" method="post" enctype="multipart/form-data">
                         <textarea placeholder="Add a comment..." aria-required="true" required name="comment" rows="3" cols="45"></textarea>
                         <br>
-                        <input type="file" aria-required="true">
+                        <input name="cFile" type="file" aria-required="true">
                         <br>
-                        <input type="submit" value="Post" required aria-required="true">
+                        <input name="post" type="submit" value="Post" required aria-required="true">
                     </form>
                     <hr>
                     <h2>Comments</h2>

@@ -1,7 +1,8 @@
 <?php
 require ("interface/Sharer.inc.php");
 require ("DbConnect.inc.php");
-class SharerThread{
+require("Post.inc.php");
+class SharerThread extends Post {
 
     private $title;
     private $message;
