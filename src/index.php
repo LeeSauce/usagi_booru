@@ -92,10 +92,11 @@ if(isset($_SESSION["USER"])){
     <nav class="selection">
         <table>
             <tr>
-                <td><a href="">Settings</a></td>
-                <td><a href="">FAQ</a></td>
+                <td><a href="settings.php">Settings</a></td>
+                <td><a href="FAQ.php">FAQ</a></td>
                 <td><a href="contact.php">Contact</a></td>
-                <td><a href="">Socials</a></td>
+                <!--<td><a href="socials.php">Socials</a></td>-->
+                <!-- add the socials later -->
             </tr>
         </table>
     </nav>

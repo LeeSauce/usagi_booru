@@ -60,7 +60,7 @@ class User {
         }
     }
     function deletePost($id){
-        require_once("Deleter.inc.php");
+        require_once("interface/Deleter.inc.php");
         $deleter = new ThreadDeleter();
         try{
             $deleter->delete($id);
@@ -70,7 +70,7 @@ class User {
     }
 
     function deleteComment($id){
-        require_once("Deleter.inc.php");
+        require_once("interface/Deleter.inc.php");
         $deleter = new commentDeleter();
         try{
             $deleter->delete($id);

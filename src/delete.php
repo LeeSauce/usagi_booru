@@ -1,4 +1,5 @@
 <?php
+    require_once("class/DbConnect.inc.php");
     session_start();
     require("class/User.inc.php");
 

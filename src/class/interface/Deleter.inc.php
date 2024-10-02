@@ -1,5 +1,5 @@
 <?php
-    require_once("DbConnect.inc.php");
+
     interface Deleter {
         const user = "root";
         const password = "xXDaTUiQQ123!?@";
