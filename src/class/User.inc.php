@@ -17,7 +17,6 @@ class User {
 
     }
 
-    // TODO: need to add thread and comment functions
     function createPost($context){
 
         require_once("Thread.inc.php");
@@ -60,9 +59,25 @@ class User {
             die();
         }
     }
-    function deletePost(){}
+    function deletePost($id){
+        require_once("Deleter.inc.php");
+        $deleter = new ThreadDeleter();
+        try{
+            $deleter->delete($id);
+        }catch (Exception $e){
+            echo ("<p>" .$e->getMessage() . "</p>\n");
+        }
+    }
 
-    function deleteComment(){}
+    function deleteComment($id){
+        require_once("Deleter.inc.php");
+        $deleter = new commentDeleter();
+        try{
+            $deleter->delete($id);
+        }catch (Exception $e){
+            echo ("<p>" .$e->getMessage() . "</p>\n");
+        }
+    }
 
 
 

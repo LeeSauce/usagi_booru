@@ -14,6 +14,7 @@
             $this->connect = new DbConnect("root", "xXDaTUiQQ123!?@", "USAGI_DB");
             $conn = $this->connect->connect();
             try{
+                // this is BAD! remember to fix this later PLEASE!
                 if($result = $conn->query($this->SQL)){
                     while($row = $result->fetch_assoc()){
                         $this->rows[] = $row;

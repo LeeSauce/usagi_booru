@@ -75,6 +75,19 @@ if(isset($_POST["post"])){
                     echo("<p><strong>Posted by:</strong> " . $thread["Username"]."</p>");
                     echo("<p><strong>Posted on:</strong> " . $thread["DateCreated"] . "</p>");
 
+                    $user = null;
+                    if(isset($_SESSION["USER"])){
+                        $user = unserialize($_SESSION["USER"]);
+                        if($user instanceof User) {
+                            $uID = $user->getId();
+                            $uRl = $user->getRole();
+                            if($uID == $thread["UserID"] || ($uRl == "admin" || $uRl == "mod")) {
+                                echo("<button><a href='delete.php?t=".$thread["ThreadID"]."'>Delete</a></button>");
+                                // I shouldn't do it like this, but who cares
+                            }
+                        }
+                    }
+
                 ?>
                 <hr>
                 <div class="comment_section">
@@ -100,8 +113,17 @@ if(isset($_POST["post"])){
                                     ."' alt='comment image' style='max-height: 200px;'>\n");
                                 echo("<p><strong>Message:</strong> " . $comment["Comment"] . "</p>\n");
                                 echo("<p><strong>Date:</strong> " . $comment["Date_created"] . "</p>\n");
+                                if($user instanceof User) {
+                                    $uID = $user->getId();
+                                    $uRl = $user->getRole();
+                                    if($uID == $thread["UserID"] || ($uRl == "admin" || $uRl == "mod")) {
+                                        echo("<button><a href='delete.php?c=".$comment["CommentID"]."'>Delete</a></button>");
+                                    }
+                                }
                                 echo("</div>\n");
                                 echo("<br>\n");
+
+
                             }
                         }
                     ?>
